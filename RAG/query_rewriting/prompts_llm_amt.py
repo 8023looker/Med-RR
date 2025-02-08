@@ -1,0 +1,11 @@
+# used for comparison (LLM-AMT)
+import ujson
+import json
+
+rewritten_prompts = {
+    "query_rewriting": "Please reformulate the given question by employing precise medical terminology. Focus on capturing the essence of the patient’s symptoms and conditions in a generalized form that reflects common clinical descriptions. Avoid using colloquial language and ensure that the rewritten query is clear, concise, and can be universally understood in a professional medical context.", 
+    "query_expansion": "Assume the role of a medical doctor and expand upon the initial query. Conduct a systematic analysis by dissecting the question into its medical components. Then, elaborate on each component with detailed medical insights that collectively build a comprehensive understanding of the underlying health issue. Proceed methodically to ensure that each step of your explanation contributes to a logically structured answer.", 
+    "relevance_filter": "Examine the retrieved passages above carefully. Determine if each passage pertains to the context of the specific query represented by ’x’. Respond with ’Yes’ if a passage is relevant and contributes meaningful information to the query, or ’No’ if it does not relate to the query or provide valuable insight. Please answer with ’Yes’ or ’No’ only for each passage assessed.",
+    "usefulness_filter": "Review the information retrieved above and evaluate its utility in addressing the question represented by ’x’. Provide a response of ’Yes’ if the information is pertinent and aids in formulating a comprehensive answer, or ’No’ if it lacks relevance or does not contribute to a substantive response to the question. Respond with a singular ’Yes’ or ’No’ for the usefulness of each piece of information.", 
+    "llm_reader_instruction": "Using the medical knowledge provided, please answer the following medical question with a chain-ofthought approach. Break down your reasoning into clear, logical steps that detail your clinical thought process from initial hypothesis formation through to the final conclusion, similar to how a medical professional would approach a diagnostic challenge. Your answer should not only be informed by the medical knowledge but also transparent in the reasoning that led to your conclusion."
+}

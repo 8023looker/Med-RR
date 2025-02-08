@@ -1,0 +1,6 @@
+./RAG/classification/output/*
+./training/output/*
+./RAG/query/output/*
+./RAG/query_rewriting/output/*
+./RAG/rerank/combination.py
+./benchmark/medmcqa/data/train.json
