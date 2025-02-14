@@ -1,4 +1,4 @@
-DATASET_LIST=(/data_train2/code/data/keerlu/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json)
+DATASET_LIST=(/data_train2/code/data/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json)
 
 MODEL_LIST=(/train_data_load/keerlu_model/keerlu_model/llama-3-8B/ 
             /train_data_load/keerlu_model/keerlu_model/Qwen2.5-7B/)
