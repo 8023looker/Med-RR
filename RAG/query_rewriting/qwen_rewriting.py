@@ -174,24 +174,24 @@ class QwenInfer:
         
 
 if __name__ == "__main__":
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/"
+    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/"
     input_path_dict = {
         "MedQA": [
-            # "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/Mainland/chinese_qbank.jsonl", # MedQA
-            # "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/US/US_qbank.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/dev.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/test.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/dev.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/test.jsonl"
+            # "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/Mainland/chinese_qbank.jsonl", # MedQA
+            # "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/US/US_qbank.jsonl",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/dev.jsonl",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/test.jsonl",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/benchmark/MedQA/data_clean/questions/US/dev.jsonl",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/benchmark/MedQA/data_clean/questions/US/test.jsonl"
         ],
         # "MedMCQA": [
-        #     "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/train.json",
-        #     "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/dev.json",
-        #     "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/test.json"
+        #     "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/train.json",
+        #     "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/dev.json",
+        #     "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/test.json"
         # ]
     }
     
-    model_path = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-72B-Instruct/"
+    model_path = "/cpfs/29f69eb5e2e60f26/code/model/Qwen2.5-72B-Instruct/"
     qwen_infer = QwenInfer(model_path)
     
     for dataset, input_paths in input_path_dict.items():
