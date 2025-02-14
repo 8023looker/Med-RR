@@ -1,11 +1,11 @@
 DATASET_LIST=(
-            # /data_train2/code/data/keerlu/medical_RAG/benchmark/pubmedqa/data/train_set.json)
-              /global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/train.jsonl 
-              /global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/train.jsonl 
-              /global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/train.json)
+            # /data_train2/code/data/medical_RAG/benchmark/pubmedqa/data/train_set.json)
+              /global_data/data/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/train.jsonl 
+              /global_data/data/medical_RAG/benchmark/MedQA/data_clean/questions/US/train.jsonl 
+              /global_data/data/medical_RAG/benchmark/medmcqa/data/train.json)
 
-# MODEL_LIST=( # /cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-7B-Instruct/) 
-# MODEL_LIST=(/cpfs/29f69eb5e2e60f26/code/sft_intern/liyouquan/huggingface_models/Meta-Llama-3.1-8B-Instruct/)
+# MODEL_LIST=( # /cpfs/29f69eb5e2e60f26/code/model/Qwen2.5-7B-Instruct/) 
+# MODEL_LIST=(/cpfs/29f69eb5e2e60f26/code/liyouquan/huggingface_models/Meta-Llama-3.1-8B-Instruct/)
 MODEL_LIST=(/global_data/data/opensource/Meta-Llama-3.1-70B-Instruct/)
 
 for MODEL_DIR in "${MODEL_LIST[@]}"; do
