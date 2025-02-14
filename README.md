@@ -13,7 +13,6 @@ The graphic below provides an overview of **Med-R<sup>2</sup>**. Check out the [
 ## Installation
 To get started, please clone the repo and install it:
 ```bash
-git clone git@github.com:8023looker/Med-RR.git
 pip install -r requirement.txt
 ```
 
@@ -25,19 +24,3 @@ pip install -r requirement.txt
 
 #### Analysis Across Scales
 ![Scaling of Context Window.](figures/context_window_scaling.svg)
-
-
-## Citation <img src="figures/citation.svg" width="20">
-
-If this was useful to you, please cite the [paper](https://arxiv.org/pdf/2501.11885):
-```
-@misc{lu2025medr2craftingtrustworthyllm,
-      title={Med-R$^2$: Crafting Trustworthy LLM Physicians through Retrieval and Reasoning of Evidence-Based Medicine}, 
-      author={Keer Lu and Zheng Liang and Da Pan and Shusen Zhang and Xin Wu and Weipeng Chen and Zenan Zhou and Guosheng Dong and Bin Cui and Wentao Zhang},
-      year={2025},
-      eprint={2501.11885},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2501.11885}, 
-}
-```
