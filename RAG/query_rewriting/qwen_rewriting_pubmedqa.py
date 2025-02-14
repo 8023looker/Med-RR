@@ -171,11 +171,11 @@ class QwenInfer:
         
 
 if __name__ == "__main__":
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/"
+    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/"
     
-    dataset, input_path = "PubMedQA", "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/pubmedqa/data/ori_pqal.json"
+    dataset, input_path = "PubMedQA", "/cpfs/29f69eb5e2e60f26/code/medical_RAG/benchmark/pubmedqa/data/ori_pqal.json"
     
-    model_path = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-72B-Instruct/"
+    model_path = "/cpfs/29f69eb5e2e60f26/code/model/Qwen2.5-72B-Instruct/"
     qwen_infer = QwenInfer(model_path)
 
     language_type = "en" # default
