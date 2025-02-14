@@ -1,7 +1,7 @@
-# DATASET_LIST=(/data_train2/code/data/keerlu/medical_RAG/RAG/CoT/output/PubMedQA/ori_pqal.json
-            #   /data_train2/code/data/keerlu/medical_RAG/RAG/CoT/output/MedQA/US/dev_written.jsonl
-            #   /data_train2/code/data/keerlu/medical_RAG/RAG/CoT/output/MedQA/Mainland/dev_written.jsonl
-DATASET_LIST=(/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json)
+# DATASET_LIST=(/data_train2/code/data/medical_RAG/RAG/CoT/output/PubMedQA/ori_pqal.json
+            #   /data_train2/code/data/medical_RAG/RAG/CoT/output/MedQA/US/dev_written.jsonl
+            #   /data_train2/code/data/medical_RAG/RAG/CoT/output/MedQA/Mainland/dev_written.jsonl
+DATASET_LIST=(/global_data/data/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json)
 
 MODEL_LIST=(/global_data/data/opensource/Qwen2.5-14B/)
 
