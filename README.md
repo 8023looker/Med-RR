@@ -21,5 +21,5 @@ pip install -r requirement.txt
 ![Results of experiments.](figures/cot_barchart.svg)
 
 
-#### Analysis Across Scales
+### Analysis Across Scales
 ![Scaling of Context Window.](figures/context_window_scaling.svg)
