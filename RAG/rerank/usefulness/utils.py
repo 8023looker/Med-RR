@@ -426,13 +426,13 @@ def initialize_model_params(input_file_path):
             "code": 0.18,
             "other": 0.56
         },
-        "model_path": "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/model/llama2-7b-hf/"
+        "model_path": "/cpfs/29f69eb5e2e60f26/user/model/llama2-7b-hf/"
     }
     initial_dict["domain_weight"] = compute_ratio(input_file_path, choice="uniform")
-    # with open("/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/HUAWEI/src/domain_weight.json", "w") as file:
+    # with open("/cpfs/29f69eb5e2e60f26/user/HUAWEI/src/domain_weight.json", "w") as file:
     #     json.dump(initial_dict, file, indent=4)
     
-    # file_path = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/training/model_params.json"
+    # file_path = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/training/model_params.json"
     # with open(file_path, "r") as file:
     #     initial_dict = json.load(file)
     return initial_dict
@@ -450,10 +450,10 @@ def write_params(output_file_path, params_dict):
 
 # multi-ability domain weight
 def initialize_multi_ability_domain_weight(choice, model_name, total_training_count=60000):
-    domain_ratio_folder = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/domain_infer/result/"
+    domain_ratio_folder = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/domain_infer/result/"
     if choice == "versatune_dynamic":
-        domain_ratio_folder = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/src/multi_ability/params/"
-        # domain_ratio_folder = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/domain_infer/multi_ability_versatune_dynamic_result/"
+        domain_ratio_folder = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/src/multi_ability/params/"
+        # domain_ratio_folder = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/domain_infer/multi_ability_versatune_dynamic_result/"
     
     domain_weight_dict = compute_ratio(domain_ratio_folder + model_name + "_40k.json" if choice != "versatune_dynamic" else domain_ratio_folder + model_name + "_params.json", choice)
     
@@ -490,7 +490,7 @@ def eval_domain_quanity():
     return domain_count
     
 def write_model_param(domain_weight_dict, model_path):
-    file_path = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/src/model_params.json"
+    file_path = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/src/model_params.json"
     with open(file_path, "w", encoding="utf-8", errors="ignore") as fout:
         model_params_dict = {
             "domain_weight": domain_weight_dict,
@@ -500,13 +500,13 @@ def write_model_param(domain_weight_dict, model_path):
         json.dump(model_params_dict, fout, ensure_ascii=False, indent=4)
         
 def read_model_param():
-    file_path = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/src/model_params.json"
+    file_path = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/src/model_params.json"
     with open(file_path, "r", encoding="utf-8", errors="ignore") as fin:
         model_params_dict = json.load(fin)
     return model_params_dict
 
 def write2model_param(model_param_dict):
-    file_path = "/cpfs/29f69eb5e2e60f26/user/sft_intern/keerlu/CPT_params/SFT_series/src/model_params.json"
+    file_path = "/cpfs/29f69eb5e2e60f26/user/CPT_params/SFT_series/src/model_params.json"
     with open(file_path, "w", encoding="utf-8", errors="ignore") as fout:
         json.dump(model_param_dict, fout, ensure_ascii=False, indent=4)
         
@@ -624,23 +624,23 @@ def jload_medical_cot(f, dataset_name, query_folder, mode="r"): # for medical do
 
 query_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/US/",        
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedQA/US/",        
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/train/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/test/"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedMCQA/train/",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedMCQA/dev/",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedMCQA/test/"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
         ]
         "MMLU_med": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_anatomy_test/", 
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_clinical_knowledge_test/", 
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_college_biology_test/", 
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_college_medicine_test/", 
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_medical_genetics_test/", 
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_professional_medicine_test/"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/mmlu_anatomy_test/", 
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/mmlu_clinical_knowledge_test/", 
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/mmlu_college_biology_test/", 
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/mmlu_college_medicine_test/", 
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/mmlu_medical_genetics_test/", 
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/mmlu_professional_medicine_test/"
         ]
     }
