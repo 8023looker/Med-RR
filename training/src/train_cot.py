@@ -74,10 +74,10 @@ PROMPT_DICT = {
 }
 
 DATA_QUERY_PROJ = {
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/PubMedQA/ori_pqal.json": "/global_data/data/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/rewritten_query/", 
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedQA/US/dev_written.jsonl": "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/US/dev/rewritten_query/", 
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedQA/Mainland/dev_written.jsonl": "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/dev/rewritten_query/", 
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json": "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/rewritten_query/"
+    "/global_data/data/medical_RAG/RAG/CoT/output/PubMedQA/ori_pqal.json": "/global_data/data/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/rewritten_query/", 
+    "/global_data/data/medical_RAG/RAG/CoT/output/MedQA/US/dev_written.jsonl": "/global_data/data/medical_RAG/RAG/query/output/MedQA/US/dev/rewritten_query/", 
+    "/global_data/data/medical_RAG/RAG/CoT/output/MedQA/Mainland/dev_written.jsonl": "/global_data/data/medical_RAG/RAG/query/output/MedQA/Mainland/dev/rewritten_query/", 
+    "/global_data/data/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json": "/global_data/data/medical_RAG/RAG/query/output/MedMCQA/dev/rewritten_query/"
 }
 
 
