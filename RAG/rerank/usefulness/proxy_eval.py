@@ -109,10 +109,10 @@ PROMPT_DICT = {
 }
 
 DATA_QUERY_PROJ = {
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/PubMedQA/ori_pqal.json": "/global_data/data/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/rewritten_query/", 
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedQA/US/dev_written.jsonl": "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/US/dev/rewritten_query/", 
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedQA/Mainland/dev_written.jsonl": "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/dev/rewritten_query/", 
-    "/global_data/data/keerlu/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json": "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/rewritten_query/"
+    "/global_data/data/medical_RAG/RAG/CoT/output/PubMedQA/ori_pqal.json": "/global_data/data/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/rewritten_query/", 
+    "/global_data/data/medical_RAG/RAG/CoT/output/MedQA/US/dev_written.jsonl": "/global_data/data/medical_RAG/RAG/query/output/MedQA/US/dev/rewritten_query/", 
+    "/global_data/data/medical_RAG/RAG/CoT/output/MedQA/Mainland/dev_written.jsonl": "/global_data/data/medical_RAG/RAG/query/output/MedQA/Mainland/dev/rewritten_query/", 
+    "/global_data/data/medical_RAG/RAG/CoT/output/MedMCQA/dev_written.json": "/global_data/data/medical_RAG/RAG/query/output/MedMCQA/dev/rewritten_query/"
 }
 
 
@@ -333,7 +333,7 @@ def eval_loss_diff():
     )
     
     # retrieved documents folder
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/rerank/usefulness/output/"
+    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/rerank/usefulness/output/"
     # judge dataset_name
     dataset_name = "MedMCQA" # default
     if "US" in data_args.data_path or "Mainland" in data_args.data_path:
@@ -343,7 +343,7 @@ def eval_loss_diff():
     elif "MedMCQA" in data_args.data_path:
         dataset_name = "MedMCQA"
   
-    input_retrieval_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/" + dataset_name + "/"
+    input_retrieval_folder = "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/" + dataset_name + "/"
     output_folder = output_root_folder + dataset_name + "/"
     os.makedirs(output_folder, exist_ok=True) # MedQA, MedMCQA, PubMedQA, mmlu_med folder
     
