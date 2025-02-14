@@ -16,7 +16,7 @@ def _make_r_io_base(f, mode: str):
     return f
 
 class ModelBGEM3:
-    def __init__(self, model_path='/global_data/data/zhangshusen/bge/models/bge-m3'):
+    def __init__(self, model_path='/global_data/data/bge/models/bge-m3'):
         self.model = BGEM3FlagModel(model_path,  
                        use_fp16=True)
         if torch.cuda.device_count() > 1:
@@ -59,20 +59,20 @@ class ModelBGEM3:
             
 
 if __name__ == "__main__":
-    output_root_folder = "/global_data/data/keerlu/medical_RAG/RAG/query/round_ablation/output/query_origin/"
+    output_root_folder = "/global_data/data/medical_RAG/RAG/query/round_ablation/output/query_origin/"
     # output_folder.mkdir(parents=True, exist_ok=True)
     # output_root_folder = sys.argv[1] + "/"
     
     input_path_dict = {
         "MedQA": [
-           "/global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/dev.jsonl",
-           "/global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/dev.jsonl"     
+           "/global_data/data/medical_RAG/benchmark/MedQA/data_clean/questions/US/dev.jsonl",
+           "/global_data/data/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/dev.jsonl"     
         ],
         "MedMCQA": [
-            "/global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/dev.json"
+            "/global_data/data/medical_RAG/benchmark/medmcqa/data/dev.json"
         ],
         "PubmedQA": [
-            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
+            "/global_data/data/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
         ]
     }
     
