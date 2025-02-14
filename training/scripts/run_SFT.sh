@@ -1,8 +1,8 @@
 DATASET_LIST=(
-            # /data_train2/code/data/keerlu/medical_RAG/benchmark/pubmedqa/data/train_set.json)
-            #   /global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/train.jsonl
-            #   /global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/train.jsonl
-              /global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/train.json)
+            # /data_train2/code/data/medical_RAG/benchmark/pubmedqa/data/train_set.json)
+            #   /global_data/data/medical_RAG/benchmark/MedQA/data_clean/questions/US/train.jsonl
+            #   /global_data/data/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/train.jsonl
+              /global_data/data/medical_RAG/benchmark/medmcqa/data/train.json)
 
 MODEL_LIST=(
             # /train_data_load/keerlu_model/keerlu_model/Qwen2.5-14B/ 
