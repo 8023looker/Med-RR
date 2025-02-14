@@ -16,7 +16,7 @@ def _make_r_io_base(f, mode: str):
     return f
 
 class ModelBGEM3:
-    def __init__(self, model_path='/global_data/data/keerlu/bge/models/bge-m3'):
+    def __init__(self, model_path='/global_data/data/bge/models/bge-m3'):
         self.model = BGEM3FlagModel(model_path,  
                        use_fp16=True)
         if torch.cuda.device_count() > 1:
@@ -62,13 +62,13 @@ class ModelBGEM3:
             
 
 if __name__ == "__main__":
-    output_root_folder = "/global_data/data/keerlu/medical_RAG/RAG/query/round_ablation/output/retrieval/"
+    output_root_folder = "/global_data/data/medical_RAG/RAG/query/round_ablation/output/retrieval/"
     # output_root_folder = sys.argv[1] + "/"
     os.makedirs(output_root_folder, exist_ok=True)
     
     input_path_list = [
-        "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/question/result_8.jsonl", 
-        "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/rewritten_query/result_8.jsonl"
+        "/global_data/data/medical_RAG/RAG/query/output/MedMCQA/dev/question/result_8.jsonl", 
+        "/global_data/data/medical_RAG/RAG/query/output/MedMCQA/dev/rewritten_query/result_8.jsonl"
     ]
     
     embedding_pipeline = ModelBGEM3()
