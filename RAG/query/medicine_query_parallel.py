@@ -77,7 +77,7 @@ class MedicalQuery:
 
 
 if __name__ == "__main__":
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/"
+    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/"
     
     # dataset, input_path = sys.argv[1], sys.argv[2]
     parser = argparse.ArgumentParser(description="Process medical queries.")
@@ -89,14 +89,14 @@ if __name__ == "__main__":
     
     # input_path_dict = {
     #     "MedQA": [
-    #         "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/Mainland/chinese_qbank.jsonl", # MedQA
-    #         "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/US/US_qbank.jsonl",
+    #         "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/Mainland/chinese_qbank.jsonl", # MedQA
+    #         "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/US/US_qbank.jsonl",
             
     #     ],
     #     "MedMCQA": [
-    #         "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/train.json",
-    #         "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/dev.json",
-    #         "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/test.json"
+    #         "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/train.json",
+    #         "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/dev.json",
+    #         "/cpfs/29f69eb5e2e60f26/code/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/test.json"
     #     ]
     # }
     
