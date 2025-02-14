@@ -72,7 +72,7 @@ class MedicalQuery:
                     
 
 if __name__ == "__main__":
-    output_root_folder = "/global_data/data/keerlu/medical_RAG/RAG/query/output/"
+    output_root_folder = "/global_data/data/medical_RAG/RAG/query/output/"
     # for raw data
     input_path_dict = {
         "MMLU_Med": []
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     
     medical_query = MedicalQuery() # initialize medical_query
     
-    dataset_folder = "/global_data/data/keerlu/medical_RAG/benchmark/mmlu_med/data/"
+    dataset_folder = "/global_data/data/medical_RAG/benchmark/mmlu_med/data/"
     for dirpath, dirnames, filenames in os.walk(dataset_folder):
         for i, filename in enumerate(tqdm(filenames, total=len(filenames))):
             dataset_path = os.path.join(dirpath, filename)
