@@ -122,36 +122,36 @@ class QwenRerank:
 if __name__ == "__main__":
     retrieval_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/US/",        
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedQA/US/",        
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/train/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/test/"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedMCQA/train/",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedMCQA/dev/",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/MedMCQA/test/"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
         ]
     }
     query_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/Mainland/chinese_qbank.jsonl", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/US/US_qbank.jsonl",  
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/MedQA/Mainland/chinese_qbank.jsonl", # MedQA
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/MedQA/US/US_qbank.jsonl",  
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/train.json",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/dev.json",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/test.json"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/MedMCQA/train.json",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/MedMCQA/dev.json",
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/MedMCQA/test.json"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
+            "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
         ]
     }
     
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/rerank/output/"
+    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/medical_RAG/RAG/rerank/output/"
     
-    model_path = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-72B-Instruct/"
+    model_path = "/cpfs/29f69eb5e2e60f26/code/model/Qwen2.5-72B-Instruct/"
     qwen_rerank = QwenRerank(model_path)
     
     language = "en" # default
