@@ -1,5 +1,3 @@
-" Qwen-72B CoT Generation "
-""" 指导如何根据根据开卷资料进行分析并查找答案 (How to use the retrieved documents) """
 import os
 import json
 

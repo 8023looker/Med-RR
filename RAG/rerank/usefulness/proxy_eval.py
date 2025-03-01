@@ -51,7 +51,7 @@ PROMPT_DICT = {
         "Below is a single-choice question-answering task related to the medical field. "
         "Consult the retrieved documents, identify key information that are directly related to the question, perform your thought process based on the retrieved information and your own knowledge step by step in your mind, then construct and output your answer.\n\n"
         "### Retrieved Documents:\n{documents}\n\n"
-        "### Example Thought Process:\n{cot_generation}\n\n" # cot_generation
+        # "### Example Thought Process:\n{cot_generation}\n\n" # cot_generation
         "Simply provide the choices of the options, without any other expressions.\n\n"
         # "### Example:\n### Question:Which of the following is not true for myelinated nerve fibers:\n\n### Options:\nA:Impulse through myelinated fibers is slower than non-myelinated fibers\nB:Membrane currents are generated at nodes of Ranvier\nC:Saltatory conduction of impulses is seen\nD:Local anesthesia is effective only when the nerve is not covered by myelin sheath\n\n### Answer:A\n\n"
         "### Question:\n{question}\n\n### Options:\n{options_str}\n### Answer:"
@@ -60,7 +60,7 @@ PROMPT_DICT = {
         "Below is a {choice_type}-choice question-answering task related to the medical field. "
         "Consult the retrieved documents, identify key information that are directly related to the question, perform your thought process based on the retrieved information and your own knowledge step by step in your mind, then construct and output your answer.\n\n"
         "### Retrieved Documents:\n{documents}\n\n"
-        "### Example Thought Process:\n{cot_generation}\n\n"
+        # "### Example Thought Process:\n{cot_generation}\n\n"
         "Simply provide the choices of the options, without any other expressions.\n\n"
         # "### Example:\n### Question:Which of the following is not true for myelinated nerve fibers:\n\n### Options:\nA:Impulse through myelinated fibers is slower than non-myelinated fibers\nB:Membrane currents are generated at nodes of Ranvier\nC:Saltatory conduction of impulses is seen\nD:Local anesthesia is effective only when the nerve is not covered by myelin sheath\n\n### Answer:A\n\n"
         "### Question:\n{question}\n\n### Options:\nA:{opa}\nB:{opb}\nC:{opc}\nD:{opd}\n\n### Answer:"
@@ -69,7 +69,7 @@ PROMPT_DICT = {
         "Below is a question-answering task related to the medical field. "
         "Consult the retrieved documents, identify key information that are directly related to the question, perform your thought process based on the retrieved information and your own knowledge step by step in your mind, then construct and output your answer.\n\n"
         "### Retrieved Documents:\n{documents}\n\n"
-        "### Example Thought Process:\n{cot_generation}\n\n"
+        # "### Example Thought Process:\n{cot_generation}\n\n"
         "Simply provide the final decision, without any other expressions.\n\n"
         "### Context:\n{CONTEXTS}\n\n### Question:\n{QUESTION}\n\n### Answer:"
         # "### Example:\n### Question:Which of the following is not true for myelinated nerve fibers:\n\n### Options:\nA:Impulse through myelinated fibers is slower than non-myelinated fibers\nB:Membrane currents are generated at nodes of Ranvier\nC:Saltatory conduction of impulses is seen\nD:Local anesthesia is effective only when the nerve is not covered by myelin sheath\n\n### Answer:A\n\n"
@@ -79,7 +79,7 @@ PROMPT_DICT = {
         "Below is a single-choice question-answering task related to the medical field, paired with an example that provides further context. "
         "Consult the retrieved documents, identify key information that are directly related to the question, perform your thought process based on the retrieved information and your own knowledge step by step in your mind, then construct and output your answer.\n\n"
         "### Retrieved Documents:\n{documents}\n\n"
-        "### Example Thought Process:\n{cot_generation}\n\n"
+        # "### Example Thought Process:\n{cot_generation}\n\n"
         "Simply provide the final decision, without any other expressions.\n\n"
         # "### Example:\n### Question:Which of the following is not true for myelinated nerve fibers:\n\n### Options:\nA:Impulse through myelinated fibers is slower than non-myelinated fibers\nB:Membrane currents are generated at nodes of Ranvier\nC:Saltatory conduction of impulses is seen\nD:Local anesthesia is effective only when the nerve is not covered by myelin sheath\n\n### Answer:A\n\n"
         "### Question:\n{Question}\n\n### Options:\nA:{opa}\nB:{opb}\nC:{opc}\nD:{opd}\n\n### Answer:"
@@ -220,7 +220,7 @@ class SupervisedDataset(Dataset):
         else:
             print("Error: dataset_name not found!")
         
-        query_path = DATA_QUERY_PROJ[data_path]
+        # query_path = DATA_QUERY_PROJ[data_path]
         # list_data_dict = utils.jload_medical_cot(data_path, dataset_name, query_path) if choice == "rag" else utils.jload(data_path, dataset_name)
         list_data_dict = utils.jload(data_path, dataset_name) # key 中包含 "documents"
         logging.warning("Formatting inputs...")
@@ -283,8 +283,8 @@ class DataCollatorForSupervisedDataset(object):
 
 def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer, data_args, choice) -> Dict:
     """Make dataset and collator for supervised fine-tuning."""
-    train_dataset = SupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, choice)
-    eval_dataset = SupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, choice)
+    train_dataset = SupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, choice=choice)
+    eval_dataset = SupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, choice=choice)
     data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
     return dict(train_dataset=train_dataset, eval_dataset=eval_dataset, data_collator=data_collator)
 
@@ -333,7 +333,7 @@ def eval_loss_diff():
     )
     
     # retrieved documents folder
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/rerank/usefulness/output/"
+    output_root_folder = "/global_data/data/keerlu/medical_RAG/med-RR/RAG/rerank/usefulness/output/"
     # judge dataset_name
     dataset_name = "MedMCQA" # default
     if "US" in data_args.data_path or "Mainland" in data_args.data_path:
@@ -343,16 +343,28 @@ def eval_loss_diff():
     elif "MedMCQA" in data_args.data_path:
         dataset_name = "MedMCQA"
   
-    input_retrieval_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/" + dataset_name + "/"
+    input_retrieval_folder = "/global_data/data/keerlu/medical_RAG/RAG/query/output/" + dataset_name + "/"
     output_folder = output_root_folder + dataset_name + "/"
     os.makedirs(output_folder, exist_ok=True) # MedQA, MedMCQA, PubMedQA, mmlu_med folder
     
     filename = os.path.basename(data_args.data_path) # filename = "train.json"
     os.makedirs(output_folder + filename.split(".")[0] + "/", exist_ok=True)
     output_folder = output_folder + filename.split(".")[0] + "/" # update output_folder → subfolder
+    os.makedirs(output_folder, exist_ok=True)
+    
     base_folder_name = data_args.data_path.split("/")[-2]
+    # print("base_folder_name", base_folder_name)
     if base_folder_name == "Mainland":
         language = "zh"
+        output_folder = output_folder + "Mainland/" # update output_folder → subfolder
+        input_retrieval_folder = input_retrieval_folder + "Mainland/"
+        os.makedirs(output_folder, exist_ok=True)
+    elif base_folder_name == "US":
+        output_folder = output_folder + "US/" # update output_folder → subfolder
+        os.makedirs(output_folder, exist_ok=True)
+        input_retrieval_folder = input_retrieval_folder + "US/"
+        
+    input_retrieval_folder = input_retrieval_folder + "rewritten_query/"
     
     with open(data_args.data_path, "r", encoding="utf-8", errors="ignore") as fin:
         for idx, line in enumerate(fin):

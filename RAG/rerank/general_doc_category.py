@@ -4,6 +4,7 @@
 import os
 import ujson
 import json
+import ast
 
 from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
@@ -13,8 +14,8 @@ import subprocess
 
 import prompts
 
-os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
-# os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
+# os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 
 class QwenRerank:
     def __init__(self, model_path):
@@ -77,9 +78,13 @@ class QwenRerank:
         sum_score = 0.0
         for idx, category in enumerate(document_classification_list):
             if category.lower() in expected_category_list:
-                sum_score += distribution_list[idx]
+                try:
+                    sum_score += float(distribution_list[idx])
+                except ValueError as e:
+                    print(f"JSON parser error: {e}")
         return sum_score
-     
+    
+    
     def retrieval_infer_category(self, retrieval_chunk, language="en"): # 传入的是已经解析好的 jsonl_line_content 
         prompt = prompts.retrieval_category_prompt[language] + "\n\n" + retrieval_chunk
         messages = [
@@ -96,7 +101,8 @@ class QwenRerank:
         response = outputs[0].outputs[0].text # [x1, x2, x3, ..., x16]
         # response_translate = self.translate_category(response, language) # original version: infer single category
         # print(response_translate)
-        return list(response)
+        response = ast.literal_eval(response)
+        return response
     
     
     def expected_category(self, nlp_category):
@@ -138,6 +144,7 @@ class QwenRerank:
                                 
                                 chunk = retrieval_content["fields"]["chunk"]
                                 chunk_category_distribution = self.retrieval_infer_category(chunk, language)
+                                print("chunk_category_distribution", chunk_category_distribution)
                                 category_score = self.general_document_category_score(chunk_category_distribution, nlp_category)
                                 retrieval_content["category_score"] = category_score # general document category score
                                 retrieval_list.append(retrieval_content)
@@ -148,7 +155,7 @@ class QwenRerank:
                     with open(output_folder + f"result_{str(index)}.jsonl", "a", encoding="utf-8", errors="ignore") as fout:
                         for result in retrieval_list:
                             fout.write(ujson.dumps(result, ensure_ascii = False) + "\n")
-                           
+                            
                 except ValueError as e:
                     print(f"JSON parser error: {e}")
 
@@ -156,36 +163,36 @@ class QwenRerank:
 if __name__ == "__main__":
     retrieval_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/US/",        
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/US/",        
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/train/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/test/"
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/train/",
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/",
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/test/"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
         ]
     }
     query_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/Mainland/chinese_qbank.jsonl", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/US/US_qbank.jsonl",  
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/Mainland/chinese_qbank.jsonl", # MedQA
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/US/US_qbank.jsonl",  
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/train.json",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/dev.json",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/test.json"
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/train.json",
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/dev.json",
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/test.json"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
         ]
     }
     
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/rerank/output/"
+    output_root_folder = "/global_data/data/keerlu/medical_RAG/med-RR/RAG/rerank/output/"
     
-    model_path = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-72B-Instruct/"
+    model_path = "/global_data/data/opensource/Qwen2.5-72B-Instruct/"
     qwen_rerank = QwenRerank(model_path)
     
     language = "en" # default

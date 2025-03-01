@@ -21,8 +21,9 @@ from transformers import Trainer
 def prepare_batch(batch, device=torch.device("cuda:0")): # device=torch.device("cuda:0")
     """ Move the batch to the device. """
     for key in batch: # 1 batch contains 1 item
+        # print("batch", batch)
         batch[key] = batch[key].to(device)
-
+    return batch
     
 class LossTrainer(Trainer):
     def __init__(self, *args, **kwargs):  
@@ -35,7 +36,7 @@ class LossTrainer(Trainer):
         device = next(model.parameters()).device
         print("Device:", device)
 
-        loss_value = self.obtain_loss(data_loader, model)
+        loss_value = self.obtain_loss(dataloader, model)
      
         model.zero_grad()
         torch.cuda.empty_cache()
@@ -44,26 +45,48 @@ class LossTrainer(Trainer):
         return loss_value
     
        
-    def obtain_loss(self, dataloader: torch.utils.data.DataLoader,
-                    model: torch.nn.Module,): # put all tensors on the same device
+    def obtain_loss_old(self, dataloader: torch.utils.data.DataLoader,
+                    model: torch.nn.Module): # put all tensors on the same device
         """ Get the loss of the model on the given dataset. """
         # total_loss = 0
         # total_tokens = 0
         loss_list = []
         for batch in tqdm(dataloader):
-            prepare_batch(batch)
+            batch = prepare_batch(batch)
             num_token = (batch["labels"] != -100).sum()
             with torch.inference_mode():
-                loss = model(**batch).loss * num_token
+                loss = model(**batch).loss # * num_token
             # total_loss += loss.item()
             # total_tokens += num_token.item()
+            # item_loss_value = total_loss / total_tokens
             item_loss_value = loss.item() / num_token.item()
-            loss_list.append(item_loss_value)
+            loss_list.append(loss.item())
+            # loss_list.append(item_loss_value)
 
         # print(f"Loss: {total_loss / total_tokens}")
         # result = {"num_tokens": total_tokens, "loss": (
         #     total_loss / total_tokens)}
         # with open(os.path.join(output_dir, "loss.txt"), "w") as f:
         #     f.write(json.dumps(result, indent=4))
+        return loss_list
+    
+    
+    def obtain_loss(self, dataloader: torch.utils.data.DataLoader,
+                    model: torch.nn.Module):
+        """ Get the loss of the model on the given dataset. """
+        device = next(model.parameters()).device
+        loss_list = []
+        
+        for batch in tqdm(dataloader):
+            batch = prepare_batch(batch, device)
+            num_token = (batch["labels"] != -100).sum()
+            
+            with torch.inference_mode():
+                output = model(**batch)
+                loss = output.loss
+            
+            item_loss_value = loss.item() / num_token.item()
+            loss_list.append(item_loss_value)
+        
         return loss_list
     

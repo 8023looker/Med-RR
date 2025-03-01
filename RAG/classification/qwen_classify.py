@@ -8,7 +8,8 @@ import ujson
 from tqdm import tqdm
 import subprocess
 
-os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
+# os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 
 
 prompts_dict = {

@@ -12,8 +12,8 @@ import subprocess
 
 import prompts
 
-os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
-# os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
+# os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 
 class QwenRerank:
     def __init__(self, model_path):
@@ -122,36 +122,36 @@ class QwenRerank:
 if __name__ == "__main__":
     retrieval_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedQA/US/",        
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/Mainland/", # MedQA-Mainland
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedQA/US/", # MedQA-USMLE
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/train/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/MedMCQA/test/"
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/train/",
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/dev/",
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/MedMCQA/test/"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
+            "/global_data/data/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
         ]
     }
     query_folder_dict = {
         "MedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/Mainland/chinese_qbank.jsonl", # MedQA
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/US/US_qbank.jsonl",  
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/Mainland/chinese_qbank.jsonl", # MedQA
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedQA/US/US_qbank.jsonl",  
         ],
         "MedMCQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/train.json",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/dev.json",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/test.json"
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/train.json",
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/dev.json",
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/MedMCQA/test.json"
         ],
         "PubMedQA": [
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
+            "/global_data/data/keerlu/medical_RAG/RAG/query_rewriting/output/PubMedQA/ori_pqal.json"
         ]
     }
     
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/rerank/output/"
+    output_root_folder = "/global_data/data/keerlu/medical_RAG/med-RR/RAG/rerank/output/" # your output_root_folder
     
-    model_path = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-72B-Instruct/"
+    model_path = "/global_data/data/opensource/Qwen2.5-72B-Instruct/" # your path to qwen2.5-72b (or other frontier LLMs)
     qwen_rerank = QwenRerank(model_path)
     
     language = "en" # default

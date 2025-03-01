@@ -634,7 +634,7 @@ query_folder_dict = {
         ],
         "PubMedQA": [
             "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query/output/PubMedQA/ori_pqal/"
-        ]
+        ],
         "MMLU_med": [
             "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_anatomy_test/", 
             "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/mmlu_clinical_knowledge_test/", 

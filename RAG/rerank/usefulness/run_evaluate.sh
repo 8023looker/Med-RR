@@ -7,7 +7,8 @@ DATASET_LIST=(
               /global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/train.json)
 
 MODEL_LIST=(
-            /train_data_load/keerlu_model/keerlu_model/Qwen2.5-0.5B
+            # /train_data_load/keerlu_model/keerlu_model/Qwen2.5-0.5B
+            /global_data/data/opensource/Qwen2.5-7B-Instruct/
             )
 
 for MODEL_DIR in "${MODEL_LIST[@]}"; do
@@ -34,7 +35,7 @@ for MODEL_DIR in "${MODEL_LIST[@]}"; do
         if [[ "$MODEL_DIR" == *"llama"* ]]; then
             echo "Using LlamaDecoderLayer for model: $MODEL_DIR"
             DECODER_LAYER="LlamaDecoderLayer"
-        elif [[ "$MODEL_DIR" == *"qwen"* ]]; then
+        elif [[ "$MODEL_DIR" == *"Qwen"* ]]; then
             echo "Using Qwen2DecoderLayer for model: $MODEL_DIR"
             DECODER_LAYER="Qwen2DecoderLayer"
         elif [[ "$MODEL_DIR" == *"Mistral"* ]]; then
@@ -48,15 +49,15 @@ for MODEL_DIR in "${MODEL_LIST[@]}"; do
         # CUDA_VISIBLE_DEVICES=0,1,2,3,5,6,7 \
         # --bf16 True \ # H20 注释掉
         # --num_train_epochs 3 \
-        torchrun --nproc_per_node=8 --master_port=4585 proxy_eval.py \
+        torchrun --nproc_per_node=4 --master_port=4585 proxy_eval.py \
             --model_name_or_path ${MODEL_DIR} \
             --data_path ${DATA_DIR} \
             --output_dir ${OUTPUT_DIR} \
             --bf16 True \
             --num_train_epochs 1 \
-            --per_device_train_batch_size 2 \
-            --per_device_eval_batch_size 4 \
-            --gradient_accumulation_steps 8 \
+            --per_device_train_batch_size 8 \
+            --per_device_eval_batch_size 8 \
+            --gradient_accumulation_steps 16 \
             --eval_strategy "no" \
             --save_strategy "steps" \
             --save_steps 2000 \

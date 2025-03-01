@@ -10,8 +10,8 @@ import subprocess
 
 import prompts
 
-os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
-
+# os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 
 class QwenInfer:
     def __init__(self, model_path):
@@ -174,24 +174,22 @@ class QwenInfer:
         
 
 if __name__ == "__main__":
-    output_root_folder = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/RAG/query_rewriting/output/"
-    input_path_dict = {
+    output_root_folder = "/global_data/data/keerlu/medical_RAG/med-RR/RAG/query_rewriting/output/" # your output_root_folder path
+    input_path_dict = { # your dataset path
         "MedQA": [
-            # "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/Mainland/chinese_qbank.jsonl", # MedQA
-            # "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/MedQA/data_clean/questions/US/US_qbank.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/dev.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/test.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/dev.jsonl",
-            "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/test.jsonl"
+            "/global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/dev.jsonl",
+            "/global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/Mainland/test.jsonl",
+            "/global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/dev.jsonl",
+            "/global_data/data/keerlu/medical_RAG/benchmark/MedQA/data_clean/questions/US/test.jsonl"
         ],
-        # "MedMCQA": [
-        #     "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/train.json",
-        #     "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/dev.json",
-        #     "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/CPT_params/SFT_series/benchmark/medical/medmcqa/medmcqa_data/test.json"
-        # ]
+        "MedMCQA": [
+            "/global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/train.json",
+            "/global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/dev.json",
+            "/global_data/data/keerlu/medical_RAG/benchmark/medmcqa/data/test.json"
+        ]
     }
     
-    model_path = "/cpfs/29f69eb5e2e60f26/code/sft_intern/keerlu/model/Qwen2.5-72B-Instruct/"
+    model_path = "/global_data/data/opensource/Qwen2.5-72B-Instruct/"
     qwen_infer = QwenInfer(model_path)
     
     for dataset, input_paths in input_path_dict.items():
