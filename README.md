@@ -86,7 +86,7 @@ where $\alpha$ is the nonnegative hyper-parameter for weight controlling. Here w
 
 **(1) Hierarchy of Evidence**
 
-$$f_h\left( x\right ) = 9 - \left( e_x - 1\right)$$
+$$f_h\left(x\right) = 9 - \left(e_x - 1\right)$$
 
 ```bash
 python evidence_level.py
@@ -97,9 +97,7 @@ python evidence_level.py
 **(2) Usefulness**
 
 <!-- $$f_u(x) = \max \left\{ \ell_\theta^{init} - \ell_\theta^x, 0 \right\}$$ -->
-$$
-f_u(x) = \max \left\{ \ell_\theta^{\text{init}} - \ell_\theta^x, 0 \right\}
-$$
+$$f_u(x) = \max \left\{ \ell_\theta^{\text{init}} - \ell_\theta^x, 0 \right\}$$
 
 ```bash
 cd ./usefulness/
