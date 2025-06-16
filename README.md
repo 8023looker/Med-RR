@@ -142,7 +142,7 @@ If this was useful to you, please cite the [paper](https://arxiv.org/pdf/2501.11
 ```
 @misc{lu2025medr2craftingtrustworthyllm,
       title={Med-R$^2$: Crafting Trustworthy LLM Physicians through Retrieval and Reasoning of Evidence-Based Medicine}, 
-      author={Keer Lu and Zheng Liang and Da Pan and Shusen Zhang and Xin Wu and Weipeng Chen and Zenan Zhou and Guosheng Dong and Bin Cui and Wentao Zhang},
+      author={Keer Lu and Zheng Liang and and Zhuoran Zhang and Da Pan and Shusen Zhang and Xin Wu and Weipeng Chen and Zenan Zhou and Guosheng Dong and Bin Cui and Tengjiao Wang and Wentao Zhang},
       year={2025},
       eprint={2501.11885},
       archivePrefix={arXiv},
