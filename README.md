@@ -97,7 +97,7 @@ python evidence_level.py
 **(2) Usefulness**
 
 <!-- $$f_u(x) = \max \left\{ \ell_\theta^{init} - \ell_\theta^x, 0 \right\}$$ -->
-$$f_u(x) = \max \left\{ \ell_\theta^{\text{init}} - \ell_\theta^x, 0 \right\}$$
+$$f_u(x) = \max \left( \ell_\theta^{\text{init}} - \ell_\theta^x, 0 \right)$$
 
 ```bash
 cd ./usefulness/
