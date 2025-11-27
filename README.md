@@ -4,7 +4,7 @@
 <!-- [![arXiv](https://img.shields.io/badge/arXiv-2305.10429-00ff00.svg)](https://arxiv.org/abs/2409.00997) -->
 
 Python implementation of ***Med-R<sup>2</sup>***, a noval medical LLM framework designed in accordance with the principles of Evidence-Based **Med**icine (EBM), conducting outstanding **R**etrieval and **R**easoning aligned with distinct phases of EBM. 
-Comprehensive experiments indicate that **Med-R<sup>2</sup>** achieves a 14.87\% improvement over the vanilla RAG methods, and even a 3.59\% enhancement compared to the fine-tuning strategies without additional training expenses. 
+Comprehensive experiments indicate that **Med-R<sup>2</sup>** achieves a 13.27\% improvement over the vanilla RAG methods, and even a 4.55\% enhancement compared to the fine-tuning strategies without additional training expenses. 
 The graphic below provides an overview of **Med-R<sup>2</sup>**.
 ![Illustration of DataSculpt.](figures/MedRR_pipeline.svg)
 
