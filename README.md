@@ -18,7 +18,7 @@ pip install -r requirement.txt
 ## Experimental Results <img src="figures/dog_head.svg" width="20">
 
 ### Performances Comparing to Baselines
-![Results of experiments.](figures/cot_barchart.svg)
+![Results of CoT experiments.](figures/cot_barchart.svg)
 
 
 ### Analysis Across Scales
